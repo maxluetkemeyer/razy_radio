@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Razy Radio</title>
+        <link rel="stylesheet" href="style.css" />
+        <style>
+            .playing {
+                background-color: grey !important;
+                color: white;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Razy Radio</h1>
+        <div>
+            <button id="jingle-btn">Jingle</button>
+        </div>
+        <div>
+            <button id="fact-btn">Random Fact</button>
+            <button id="tipp-btn">Tagestipp</button>
+        </div>
+        <div>
+            <button id="teamer-btn">Teamer des Tages</button>
+            <button id="wetter-btn">Wetter</button>
+        </div>
+        <audio id="jingle-audio" src="sounds/jingle_0.mp4"></audio>
+        <audio id="fact-audio" src="sounds/random_fact.mp4"></audio>
+        <audio id="tipp-audio" src="sounds/tagestipp.mp4"></audio>
+        <audio id="teamer-audio" src="sounds/teamer_des_tags.mp4"></audio>
+        <audio id="wetter-audio" src="sounds/wetter.mp4"></audio>
+        <script>
+            const buttons = [
+                { btn: 'jingle-btn', audio: 'jingle-audio' },
+                { btn: 'fact-btn', audio: 'fact-audio' },
+                { btn: 'tipp-btn', audio: 'tipp-audio' },
+                { btn: 'teamer-btn', audio: 'teamer-audio' },
+                { btn: 'wetter-btn', audio: 'wetter-audio' }
+            ];
+
+            buttons.forEach(({ btn, audio }) => {
+                const button = document.getElementById(btn);
+                const audioElem = document.getElementById(audio);
+
+                button.addEventListener('click', () => {
+                    // Pause all audios and reset buttons
+                    buttons.forEach(({ btn: b, audio: a }) => {
+                        document.getElementById(b).classList.remove('playing');
+                        document.getElementById(a).pause();
+                        document.getElementById(a).currentTime = 0;
+                    });
+                    button.classList.add('playing');
+                    audioElem.play();
+                });
+
+                audioElem.addEventListener('ended', () => {
+                    button.classList.remove('playing');
+                });
+                audioElem.addEventListener('pause', () => {
+                    button.classList.remove('playing');
+                });
+            });
+        </script>
+    </body>
+</html>
