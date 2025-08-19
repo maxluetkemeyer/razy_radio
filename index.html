@@ -16,6 +16,7 @@
         <h1>Razy Radio</h1>
         <div>
             <button id="jingle-btn">Jingle</button>
+            <button id="song-btn">Song des Tages</button>
         </div>
         <div>
             <button id="fact-btn">Random Fact</button>
@@ -25,13 +26,15 @@
             <button id="teamer-btn">Teamer des Tages</button>
             <button id="wetter-btn">Wetter</button>
         </div>
-        <audio id="jingle-audio" src="sounds/jingle_0.mp4"></audio>
+        <audio id="jingle-audio" src="sounds/jingle.mp4"></audio>
+        <audio id="song-audio" src="sounds/song_des_tags.mp4"></audio>
         <audio id="fact-audio" src="sounds/random_fact.mp4"></audio>
         <audio id="tipp-audio" src="sounds/tagestipp.mp4"></audio>
         <audio id="teamer-audio" src="sounds/teamer_des_tags.mp4"></audio>
         <audio id="wetter-audio" src="sounds/wetter.mp4"></audio>
         <script>
             const buttons = [
+                { btn: 'song-btn', audio: 'song-audio' },
                 { btn: 'jingle-btn', audio: 'jingle-audio' },
                 { btn: 'fact-btn', audio: 'fact-audio' },
                 { btn: 'tipp-btn', audio: 'tipp-audio' },
